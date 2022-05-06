@@ -15,12 +15,12 @@ const (
 	MinNumberOfSides = 2 // should remain unchanged. Die should have at least two sides!
 )
 
-type dice struct {
+type die struct {
 	numberOfSides int
 	rolledValue   int
 }
 
-type diceList []dice
+type diceList []die
 
 func initDice(numberOfDice int) diceList {
 	var diceList diceList
@@ -30,12 +30,12 @@ func initDice(numberOfDice int) diceList {
 
 	for i := 0; i < numberOfDice; i++ {
 		if MaxNumberOfSides >= MinNumberOfSides {
-			numberOfSides = rand.Intn(MaxNumberOfSides-1) + 2 // min number of sides = 2
+			numberOfSides = rand.Intn(MaxNumberOfSides-1) + MinNumberOfSides // min number of sides = 2
 		} else {
 			numberOfSides = NumberOfSides
 		}
 
-		diceList = append(diceList, dice{numberOfSides: numberOfSides})
+		diceList = append(diceList, die{numberOfSides: numberOfSides})
 	}
 
 	return diceList
